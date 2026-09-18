@@ -166,6 +166,7 @@ class _HomeScreenState extends State<HomeScreen> {
           Icons.chat_bubble_outline_rounded,
           size: 24.w,
           color: AppColors.secondary,
+
         ),
         activeIcon: Icon(
           Icons.chat_bubble_rounded,
