@@ -5,6 +5,7 @@ class FavoriteUsers {
 
   FavoriteUsers({this.message, this.statusCode, this.data});
 
+
   FavoriteUsers.fromJson(Map<String, dynamic> json) {
     message = json['message'];
     statusCode = json['statusCode'];
@@ -15,6 +16,7 @@ class FavoriteUsers {
       });
     }
   }
+
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
