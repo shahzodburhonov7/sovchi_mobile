@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Bolalar Xavfsizligi Siyosati — Sovchilar.net</title>
+  <title>Child Safety Policy — Sovchilar.net</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap">
   <style>
     :root {
@@ -21,15 +21,9 @@
     }
     @media (prefers-color-scheme: dark) {
       :root:not([data-theme="light"]) {
-        --bg:        #0f1117;
-        --surface:   #1a1e28;
-        --fg:        #e8e6e1;
-        --fg-muted:  #8a93a6;
-        --accent:    #e05a4e;
-        --accent-bg: #2a1614;
-        --border:    #2a2f3d;
-        --green:     #4caf82;
-        --green-bg:  #0e2318;
+        --bg: #0f1117; --surface: #1a1e28; --fg: #e8e6e1;
+        --fg-muted: #8a93a6; --accent: #e05a4e; --accent-bg: #2a1614;
+        --border: #2a2f3d; --green: #4caf82; --green-bg: #0e2318;
         color-scheme: dark;
       }
     }
@@ -41,158 +35,276 @@
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      background: var(--bg);
-      color: var(--fg);
-      font-family: var(--ff-body);
-      font-size: 16px;
-      line-height: 1.7;
+      background: var(--bg); color: var(--fg);
+      font-family: var(--ff-body); font-size: 16px; line-height: 1.7;
       padding: 48px 16px;
     }
-    .page { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 32px; }
-    .header { text-align: center; padding-block: 16px 8px; }
+    .page { max-width: 740px; margin: 0 auto; display: flex; flex-direction: column; gap: 28px; }
+
+    /* Lang toggle */
+    .lang-bar {
+      display: flex; justify-content: flex-end; gap: 8px;
+    }
+    .lang-btn {
+      padding: 5px 14px; border-radius: 100px; font-size: 13px; font-weight: 600;
+      border: 1.5px solid var(--border); background: transparent; color: var(--fg-muted);
+      cursor: pointer; transition: all .15s;
+    }
+    .lang-btn.active {
+      background: var(--accent); color: #fff; border-color: var(--accent);
+    }
+
+    /* Header */
+    .header { text-align: center; padding-block: 8px; }
     .badge {
       display: inline-flex; align-items: center; gap: 6px;
       background: var(--accent-bg); color: var(--accent);
-      font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
-      padding: 5px 12px; border-radius: 100px; margin-bottom: 20px;
+      font-size: 11px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase;
+      padding: 5px 13px; border-radius: 100px; margin-bottom: 18px;
     }
     .header h1 {
-      font-family: var(--ff-display); font-size: clamp(22px, 5vw, 34px);
+      font-family: var(--ff-display); font-size: clamp(20px, 5vw, 32px);
       font-weight: 700; line-height: 1.25; color: var(--fg);
-      text-wrap: balance; margin-bottom: 12px;
+      text-wrap: balance; margin-bottom: 10px;
     }
     .header .meta { font-size: 13px; color: var(--fg-muted); }
     hr.divider { height: 1px; background: var(--border); border: none; }
+
+    /* Sections */
     .section {
       background: var(--surface); border: 1px solid var(--border);
-      border-radius: 12px; padding: 28px 32px;
+      border-radius: 12px; padding: 26px 30px;
     }
-    @media (max-width: 480px) { .section { padding: 20px 18px; } }
-    .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+    @media (max-width: 480px) { .section { padding: 18px 16px; } }
+    .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
     .icon-wrap {
-      width: 36px; height: 36px; border-radius: 8px;
+      width: 34px; height: 34px; border-radius: 8px;
       display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0; font-size: 18px;
+      flex-shrink: 0; font-size: 17px;
     }
     .icon-wrap.red { background: var(--accent-bg); }
     .icon-wrap.green { background: var(--green-bg); }
-    .section h2 { font-family: var(--ff-display); font-size: 16px; font-weight: 700; color: var(--fg); }
-    .section p, .section li { font-size: 15px; color: var(--fg-muted); line-height: 1.75; }
-    .section p + p { margin-top: 12px; }
-    .section ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .section h2 { font-family: var(--ff-display); font-size: 15px; font-weight: 700; color: var(--fg); }
+    .section p, .section li { font-size: 14.5px; color: var(--fg-muted); line-height: 1.75; }
+    .section p + p { margin-top: 10px; }
+    .section ul { list-style: none; display: flex; flex-direction: column; gap: 9px; margin-top: 12px; }
     .section ul li { display: flex; gap: 10px; align-items: flex-start; }
-    .bullet { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); margin-top: 9px; flex-shrink: 0; }
-    .bullet.green { background: var(--green); }
+    .dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); margin-top: 9px; flex-shrink: 0; }
+    .dot.green { background: var(--green); }
     .prohibited {
       border-left: 3px solid var(--accent); background: var(--accent-bg);
-      border-radius: 0 8px 8px 0; padding: 14px 18px; margin-top: 16px;
-      font-size: 15px; color: var(--fg); font-weight: 500;
+      border-radius: 0 8px 8px 0; padding: 13px 16px; margin-top: 14px;
+      font-size: 14px; color: var(--fg); font-weight: 500;
     }
     .contact-card {
       background: var(--green-bg); border: 1px solid var(--green);
-      border-radius: 10px; padding: 20px 24px;
-      display: flex; flex-direction: column; gap: 12px; margin-top: 18px;
+      border-radius: 10px; padding: 18px 22px;
+      display: flex; flex-direction: column; gap: 10px; margin-top: 16px;
     }
-    .contact-card .label { font-size: 12px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--green); }
-    .email-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
-    .email-display { font-size: 15px; font-weight: 600; color: var(--fg); word-break: break-all; user-select: text; }
+    .contact-card .label { font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--green); }
+    .email-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+    .email-display { font-size: 15px; font-weight: 600; color: var(--fg); word-break: break-all; }
     .copy-btn {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 6px 14px; background: var(--green); color: #fff;
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 6px 13px; background: var(--green); color: #fff;
       border: none; border-radius: 6px; font-size: 13px; font-weight: 500;
       cursor: pointer; transition: opacity .15s; flex-shrink: 0;
     }
-    .copy-btn:hover { opacity: .85; }
+    .copy-btn:hover { opacity: .82; }
     .footer { text-align: center; font-size: 13px; color: var(--fg-muted); }
+
+    /* Lang visibility */
+    [data-lang] { display: none; }
+    body.lang-uz [data-lang="uz"] { display: block; }
+    body.lang-en [data-lang="en"] { display: block; }
+    .header h1 [data-lang],
+    .header .meta [data-lang],
+    .badge [data-lang] { display: none; }
+    body.lang-uz .header h1 [data-lang="uz"],
+    body.lang-uz .header .meta [data-lang="uz"],
+    body.lang-uz .badge [data-lang="uz"] { display: inline; }
+    body.lang-en .header h1 [data-lang="en"],
+    body.lang-en .header .meta [data-lang="en"],
+    body.lang-en .badge [data-lang="en"] { display: inline; }
   </style>
 </head>
-<body>
+<body class="lang-en">
 <div class="page">
+
+  <!-- Lang toggle -->
+  <div class="lang-bar">
+    <button class="lang-btn" onclick="setLang('uz')" id="btn-uz">O'zbek</button>
+    <button class="lang-btn active" onclick="setLang('en')" id="btn-en">English</button>
+  </div>
+
+  <!-- Header -->
   <header class="header">
-    <div class="badge">🛡️ Rasmiy siyosat</div>
-    <h1>Bolalar Xavfsizligi Siyosati</h1>
-    <p class="meta">Sovchilar.net &nbsp;·&nbsp; Oktyabr 2025</p>
+    <div class="badge">
+      🛡️
+      <span data-lang="uz">Rasmiy siyosat</span>
+      <span data-lang="en">Official Policy</span>
+    </div>
+    <h1>
+      <span data-lang="uz">Bolalar Xavfsizligi Siyosati</span>
+      <span data-lang="en">Child Safety Policy</span>
+    </h1>
+    <p class="meta">
+      <span data-lang="uz">Sovchilar.net · Oktyabr 2025</span>
+      <span data-lang="en">Sovchilar.net · October 2025</span>
+    </p>
   </header>
 
   <hr class="divider">
 
+  <!-- Commitment -->
   <section class="section">
     <div class="section-header">
       <div class="icon-wrap red">🛡️</div>
-      <h2>Bizning majburiyatimiz</h2>
+      <h2 data-lang="uz">Bizning majburiyatimiz</h2>
+      <h2 data-lang="en">Our Commitment</h2>
     </div>
-    <p>Sovchilar.net — foydalanuvchilar o'rtasida nikoh maqsadida aloqa o'rnatishga yordam beradigan platforma. Biz barcha foydalanuvchilar, xususan voyaga yetmaganlarning xavfsizligini ta'minlashga qat'iy majburmiz.</p>
-    <p>Platformamiz faqat 18 yoshdan katta shaxslar uchun mo'ljallangan bo'lib, bolalarga zarar yetkazuvchi har qanday kontent yoki xatti-harakat qat'iyan taqiqlanadi va darhol tegishli organlarga xabar qilinadi.</p>
+    <div data-lang="uz">
+      <p>Sovchilar.net — foydalanuvchilar o'rtasida nikoh maqsadida aloqa o'rnatishga yordam beradigan platforma. Biz barcha foydalanuvchilar, xususan voyaga yetmaganlarning xavfsizligini ta'minlashga qat'iy majburmiz.</p>
+      <p>Platformamiz faqat 18 yoshdan katta shaxslar uchun mo'ljallangan. Bolalarga zarar yetkazuvchi har qanday kontent yoki xatti-harakat qat'iyan taqiqlanadi va darhol tegishli organlarga xabar qilinadi.</p>
+    </div>
+    <div data-lang="en">
+      <p>Sovchilar.net is a matchmaking platform that helps users connect for the purpose of marriage. We are firmly committed to the safety of all users, especially minors.</p>
+      <p>Our platform is intended solely for individuals 18 years of age or older. Any content or behavior that harms children is strictly prohibited and will be immediately reported to the relevant authorities.</p>
+    </div>
   </section>
 
+  <!-- Prohibited -->
   <section class="section">
     <div class="section-header">
       <div class="icon-wrap red">🚫</div>
-      <h2>Taqiqlangan xatti-harakatlar (CSAE)</h2>
+      <h2 data-lang="uz">Taqiqlangan xatti-harakatlar (CSAE)</h2>
+      <h2 data-lang="en">Prohibited Conduct (CSAE)</h2>
     </div>
-    <p>Quyidagilar platformada mutlaqo taqiqlanadi:</p>
-    <ul style="margin-top:14px">
-      <li><span class="bullet"></span><span>Bolalarga nisbatan jinsiy tazyiq, zo'ravonlik yoki ekspluatatsiya</span></li>
-      <li><span class="bullet"></span><span>Voyaga yetmaganlarni o'z ichiga olgan har qanday kontent yaratish yoki tarqatish</span></li>
-      <li><span class="bullet"></span><span>Bolalarni tanishuvga yoki zararli munosabatlarga jalb qilish</span></li>
-      <li><span class="bullet"></span><span>Voyaga yetmagan shaxs sifatida ro'yxatdan o'tish</span></li>
-      <li><span class="bullet"></span><span>Bolalarning shaxsiy ma'lumotlarini to'plash yoki tarqatish</span></li>
-    </ul>
-    <div class="prohibited">Ushbu qoidalarni buzish hisobni darhol bloklash va huquq-tartibot idoralariga murojaat qilishga olib keladi.</div>
+    <div data-lang="uz">
+      <p>Quyidagilar platformada mutlaqo taqiqlanadi:</p>
+      <ul>
+        <li><span class="dot"></span><span>Bolalarga nisbatan jinsiy tazyiq, zo'ravonlik yoki ekspluatatsiya</span></li>
+        <li><span class="dot"></span><span>Voyaga yetmaganlarni o'z ichiga olgan har qanday kontent yaratish yoki tarqatish</span></li>
+        <li><span class="dot"></span><span>Bolalarni tanishuvga yoki zararli munosabatlarga jalb qilish</span></li>
+        <li><span class="dot"></span><span>Voyaga yetmagan shaxs sifatida ro'yxatdan o'tish</span></li>
+        <li><span class="dot"></span><span>Bolalarning shaxsiy ma'lumotlarini to'plash yoki tarqatish</span></li>
+      </ul>
+      <div class="prohibited">Ushbu qoidalarni buzish hisobni darhol bloklash va huquq-tartibot idoralariga murojaat qilishga olib keladi.</div>
+    </div>
+    <div data-lang="en">
+      <p>The following are strictly prohibited on our platform:</p>
+      <ul>
+        <li><span class="dot"></span><span>Child Sexual Abuse and Exploitation (CSAE) in any form</span></li>
+        <li><span class="dot"></span><span>Creating, distributing, or storing any content involving minors</span></li>
+        <li><span class="dot"></span><span>Grooming or soliciting minors for any relationship</span></li>
+        <li><span class="dot"></span><span>Registering or creating a profile as or for a minor</span></li>
+        <li><span class="dot"></span><span>Collecting or sharing personal data of children</span></li>
+      </ul>
+      <div class="prohibited">Violations of these rules result in immediate account suspension and referral to law enforcement authorities.</div>
+    </div>
   </section>
 
+  <!-- Safety measures -->
   <section class="section">
     <div class="section-header">
       <div class="icon-wrap green">✅</div>
-      <h2>Xavfsizlik choralari</h2>
+      <h2 data-lang="uz">Xavfsizlik choralari</h2>
+      <h2 data-lang="en">Safety Measures</h2>
     </div>
-    <ul>
-      <li><span class="bullet green"></span><span>Ro'yxatdan o'tishda 18 yoshdan katta ekanlik tasdiqlash majburiy</span></li>
-      <li><span class="bullet green"></span><span>Shubhali xatti-harakatlar avtomatik tizim orqali aniqlanadi</span></li>
-      <li><span class="bullet green"></span><span>Foydalanuvchilar boshqalarni ilova ichidan xabar qilishi mumkin</span></li>
-      <li><span class="bullet green"></span><span>Barcha shikoyatlar xavfsizlik jamoasi tomonidan ko'rib chiqiladi</span></li>
-      <li><span class="bullet green"></span><span>Qoidabuzarlik holatlari davlat organlariga uzatiladi</span></li>
-    </ul>
+    <div data-lang="uz">
+      <ul>
+        <li><span class="dot green"></span><span>Ro'yxatdan o'tishda 18 yoshdan katta ekanlik tasdiqlash majburiy</span></li>
+        <li><span class="dot green"></span><span>Shubhali xatti-harakatlar avtomatik tizim orqali aniqlanadi</span></li>
+        <li><span class="dot green"></span><span>Foydalanuvchilar boshqalarni ilova ichidan xabar qilishi mumkin</span></li>
+        <li><span class="dot green"></span><span>Barcha shikoyatlar xavfsizlik jamoasi tomonidan ko'rib chiqiladi</span></li>
+        <li><span class="dot green"></span><span>Qoidabuzarlik holatlari davlat organlariga uzatiladi</span></li>
+      </ul>
+    </div>
+    <div data-lang="en">
+      <ul>
+        <li><span class="dot green"></span><span>Age verification (18+) is required at registration</span></li>
+        <li><span class="dot green"></span><span>Suspicious behavior is detected through automated systems</span></li>
+        <li><span class="dot green"></span><span>Users can report others directly from within the app</span></li>
+        <li><span class="dot green"></span><span>All reports are reviewed by our safety team</span></li>
+        <li><span class="dot green"></span><span>Violations are escalated to the relevant authorities</span></li>
+      </ul>
+    </div>
   </section>
 
+  <!-- Report -->
   <section class="section">
     <div class="section-header">
       <div class="icon-wrap red">📩</div>
-      <h2>Xabar qilish va murojaat</h2>
+      <h2 data-lang="uz">Xabar qilish va murojaat</h2>
+      <h2 data-lang="en">Reporting & Contact</h2>
     </div>
-    <p>Bolalar xavfsizligiga oid muammo yoki shubhali holat ko'rsangiz, quyidagi manzilga elektron xat yuboring. Barcha murojaatlar maxfiy va ustuvor tartibda ko'rib chiqiladi.</p>
+    <div data-lang="uz">
+      <p>Bolalar xavfsizligiga oid muammo yoki shubhali holat ko'rsangiz, quyidagi manzilga elektron xat yuboring. Barcha murojaatlar maxfiy va ustuvor tartibda ko'rib chiqiladi.</p>
+    </div>
+    <div data-lang="en">
+      <p>If you encounter any child safety concern or suspicious behavior on our platform, please contact us at the address below. All reports are treated confidentially and reviewed as a priority.</p>
+    </div>
     <div class="contact-card">
-      <div class="label">Xavfsizlik bo'yicha aloqa</div>
+      <div class="label" data-lang="uz">Xavfsizlik bo'yicha aloqa</div>
+      <div class="label" data-lang="en">Child Safety Contact</div>
       <div class="email-row">
         <span class="email-display" id="email-text">shahzodburhonov7@gmail.com</span>
-        <button class="copy-btn" onclick="copyEmail()" id="copy-btn">📋 Nusxalash</button>
+        <button class="copy-btn" onclick="copyEmail()" id="copy-btn">📋 <span id="copy-label">Copy</span></button>
       </div>
     </div>
   </section>
 
+  <!-- Legal -->
   <section class="section">
     <div class="section-header">
       <div class="icon-wrap red">⚖️</div>
-      <h2>Huquqiy asoslar</h2>
+      <h2 data-lang="uz">Huquqiy asoslar</h2>
+      <h2 data-lang="en">Legal Basis</h2>
     </div>
-    <p>Ushbu siyosat O'zbekiston Respublikasining bolalar huquqlarini himoya qilishga oid qonunchiligiga, shuningdek BMTning Bola huquqlari to'g'risidagi konventsiyasiga asoslanadi.</p>
-    <p>Sovchilar.net Google Play va App Store siyosatlariga, jumladan Child Safety Standards talablariga to'liq rioya qiladi.</p>
+    <div data-lang="uz">
+      <p>Ushbu siyosat O'zbekiston Respublikasining bolalar huquqlarini himoya qilishga oid qonunchiligiga, shuningdek BMTning Bola huquqlari to'g'risidagi konventsiyasiga asoslanadi.</p>
+      <p>Sovchilar.net Google Play va App Store siyosatlariga, jumladan Child Safety Standards talablariga to'liq rioya qiladi.</p>
+    </div>
+    <div data-lang="en">
+      <p>This policy is based on the legislation of the Republic of Uzbekistan on the protection of children's rights, as well as the UN Convention on the Rights of the Child.</p>
+      <p>Sovchilar.net fully complies with Google Play and App Store policies, including the Child Safety Standards requirements.</p>
+    </div>
   </section>
 
   <footer class="footer">
-    <p>© 2025 Sovchilar.net &nbsp;·&nbsp; Barcha huquqlar himoyalangan</p>
+    <p>© 2025 Sovchilar.net &nbsp;·&nbsp; All rights reserved</p>
   </footer>
+
 </div>
 
 <script>
+  function setLang(lang) {
+    document.body.className = 'lang-' + lang;
+    document.getElementById('btn-uz').className = 'lang-btn' + (lang === 'uz' ? ' active' : '');
+    document.getElementById('btn-en').className = 'lang-btn' + (lang === 'en' ? ' active' : '');
+    document.getElementById('copy-label').textContent = lang === 'uz' ? 'Nusxalash' : 'Copy';
+    try { localStorage.setItem('lang', lang); } catch(e) {}
+  }
+
+  (function() {
+    try {
+      var saved = localStorage.getItem('lang');
+      if (saved === 'uz') setLang('uz');
+    } catch(e) {}
+  })();
+
   function copyEmail() {
-    const email = document.getElementById('email-text').textContent;
-    const btn = document.getElementById('copy-btn');
-    navigator.clipboard.writeText(email).then(() => {
-      btn.textContent = '✓ Nusxalandi';
-      setTimeout(() => { btn.textContent = '📋 Nusxalash'; }, 2000);
-    }).catch(() => {
-      const r = document.createRange();
+    var email = document.getElementById('email-text').textContent;
+    var btn = document.getElementById('copy-btn');
+    var label = document.getElementById('copy-label');
+    var isUz = document.body.classList.contains('lang-uz');
+    navigator.clipboard.writeText(email).then(function() {
+      label.textContent = isUz ? '✓ Nusxalandi' : '✓ Copied';
+      setTimeout(function() {
+        label.textContent = isUz ? 'Nusxalash' : 'Copy';
+      }, 2000);
+    }).catch(function() {
+      var r = document.createRange();
       r.selectNode(document.getElementById('email-text'));
       window.getSelection().removeAllRanges();
       window.getSelection().addRange(r);
